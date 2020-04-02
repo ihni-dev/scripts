@@ -56,11 +56,6 @@ function Refresh-Environment {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
 
-function Enter-Key-To-Exit {
-    [void](Read-Host 'Press Enter to exit')
-    Exit
-}
-
 function Interval {
     Write-Output "`n`n`n`n`n"
 }
@@ -104,7 +99,7 @@ You need to restart your computer. Please save your work and close all running a
 
 if (-Not (Check-If-Admin-Session)) {
     Write-Output "You must run this script in an elevated command shell, using 'Run as Administator'"
-    Enter-Key-To-Exit
+    Exit
 }
 
 $decision = Confirm-Install
@@ -112,7 +107,7 @@ $decision = Confirm-Install
 if ($decision -eq 0) {
     Install-Packages
 } else {
-    Enter-Key-To-Exit
+    Exit
 }
 
 $decision = Confirm-Reboot
@@ -120,5 +115,5 @@ $decision = Confirm-Reboot
 if ($decision -eq 0) {
     Restart-Computer -Confirm:$true
 } else {
-    Enter-Key-To-Exit
+    Exit
 }
