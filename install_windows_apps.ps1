@@ -26,22 +26,17 @@ function Install-Packages {
     Print-Message-With-Interval "**********Installing Google Chrome**********"
     choco upgrade googlechrome -y
     
-    Print-Message-With-Interval "**********Installing PgAmind 4**********"
-    choco upgrade pgadmin4 -y
-    
-    Print-Message-With-Interval "**********Installing MySql Workbench**********"
-    choco upgrade mysql.workbench -y
-    
     Print-Message-With-Interval "**********Installing SSMS**********"
     choco upgrade ssms -y
-    
-    Print-Message-With-Interval "**********Installing github desktop**********"
-    choco upgrade github-desktop -y
 
     Refresh-Environment
     
     Print-Message-With-Interval "**********Installing angular cli**********"
     npm install -y -g @angular/cli
+
+    Print-Message-With-Interval "**********Installing Windows Build Tools**********"
+    npm install -y -g @angular/cli
+    npm install -y -g windows-build-tools
 }
 
 function Print-Message-With-Interval {
@@ -71,12 +66,10 @@ Following software will be installed:
     - docker desktop @latest-stable
     - visual studio code @latest
     - Google Chrome @latest
-    - PgAdmin 4 @latest
-    - mySql Workbench @latest
     - SSMS @latest
-    - github dekstop @latest
     with npm:
     - angular cli @latest
+    - windows build tools @latest
 It will also enable following windows features:
     - containers
     - Hyper-V
